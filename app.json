@@ -21,6 +21,10 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "com.tonybenoy.no_reels",
+      "versionCode": 1
     }
   }
 }
