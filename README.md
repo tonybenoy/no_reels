@@ -1,6 +1,14 @@
 # No Reels
 A stupid attempt at hiding reels from instagram and probably other stuff.
 Basically a webview of instagram website to avoid reels. Also react native? Fyi Expo is cool!
+
+## Commmands
+- `npm start`: Starts or restarts a local server for your app and gives you a url to it.
+- `npm run android`: Opens your app in the Expo client on a connected Android device.
+- `npm run ios`": Opens your app in the Expo client in a currently running iOS simulator on your computer.
+- `npm run web`": Opens your app in a web browser.
+- `npm run eject`: Creates Xcode and Android Studio projects for your app. Use this if you need to add custom native functionality.
+
 ## TODO
 - [ ] Fix navigation
 - [ ] Reload page
