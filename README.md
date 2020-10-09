@@ -1,3 +1,4 @@
+![alt text](https://github.com/tonybenoy/no_reels/blob/master/assets/icon.png?raw=true)
 # No Reels
 A stupid attempt at hiding reels from instagram and probably other stuff.
 Basically a webview of instagram website to avoid reels. Also react native? Fyi Expo is cool!
