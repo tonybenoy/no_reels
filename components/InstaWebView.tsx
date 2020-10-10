@@ -1,10 +1,19 @@
-import React, { useEffect, useRef } from 'react';
-import { BackHandler } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import {
+	BackHandler,
+	RefreshControl,
+	ScrollView,
+} from 'react-native';
+import { WebView, WebViewMessageEvent } from 'react-native-webview';
 
-import { WebView } from 'react-native-webview';
+import { INJECTED_JS_WEBVIEW } from '../contants';
 
 export const InstaWebView = () => {
 	const webview = useRef<WebView>(null);
+	const [refreshing, setRefreshing] = useState<boolean>(false);
+	const [isPTREnabled, setPTREnabled] = useState<boolean>(true);
+	const [scrollViewHeight, setScrollViewHeight] = useState<number>(0);
+
 	useEffect(() => {
 		const backAction = () => {
 			if (webview.current) {
@@ -19,11 +28,40 @@ export const InstaWebView = () => {
 		return () => back.remove();
 	}, [webview]);
 
+	const onRefresh = () => {
+		setRefreshing(true);
+		webview.current?.reload();
+	}
+
+	const onMessage = (event: WebViewMessageEvent) => {
+		const { data } = event.nativeEvent
+		try {
+			const { scrollTop } = JSON.parse(data)
+			setPTREnabled(scrollTop < 10)
+		} catch (error) { }
+	}
+
 	return (
-		<WebView
-			source={{ uri: 'https://instagram.com/' }}
-			style={{ marginTop: 24 }}
-			ref={webview}
-		/>
+		<ScrollView
+			contentContainerStyle={{ flex: 1, height: '100%' }}
+			onLayout={e => setScrollViewHeight(e.nativeEvent.layout.height)}
+			refreshControl={
+				<RefreshControl
+					refreshing={refreshing}
+					onRefresh={onRefresh}
+					progressViewOffset={100}
+					enabled={isPTREnabled}
+				/>
+			}
+		>
+			<WebView
+				source={{ uri: 'https://instagram.com/' }}
+				style={{ marginTop: 24, height: scrollViewHeight }}
+				ref={webview}
+				onMessage={onMessage}
+				onLoadEnd={e => setRefreshing(false)}
+				injectedJavaScript={INJECTED_JS_WEBVIEW}
+			/>
+		</ScrollView>
 	);
 };
