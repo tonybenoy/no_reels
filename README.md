@@ -11,7 +11,7 @@ Basically a webview of instagram website to avoid reels. Also react native? Fyi 
 - `npm run eject` or `expo eject`: Creates Xcode and Android Studio projects for your app. Use this if you need to add custom native functionality.
 
 ## TODO
-- [ ] Reload page
+
 - [ ] Dark mode (Obviously)
 - [ ] Arts
 - [ ] Notifications
