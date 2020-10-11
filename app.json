@@ -17,7 +17,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "noreels"
     },
     "web": {
       "favicon": "./assets/favicon.png"
