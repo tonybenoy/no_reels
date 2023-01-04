@@ -1,4 +1,4 @@
-** Instagram now has reels on it's website so the app finally dies **
+**Instagram now has reels on it's website so the app finally dies**
 
 ![alt text](https://github.com/tonybenoy/no_reels/blob/master/assets/icon.png?raw=true)
 # No Reels
